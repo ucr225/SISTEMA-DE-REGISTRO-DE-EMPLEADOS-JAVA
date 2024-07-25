@@ -1,0 +1,360 @@
+package Programa;
+
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicComboBoxUI;
+import javax.swing.border.LineBorder;
+
+public class carga extends JFrame {
+    private JPanel contentPane;
+    private JLabel etiquetaSaludo;
+
+    public carga() {
+        // Creando el content pane
+        contentPane = new JPanel();
+        setBounds(100, 100, 1056, 680);
+        setTitle("CARGA DE EMPLEADOS");
+        setResizable(false);
+        contentPane.setBackground(new Color(25, 34, 41));
+        contentPane.setLayout(null);
+        setContentPane(contentPane);
+        setResizable(false);
+        
+        // Configurar la operación de cierre
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        
+        //
+        etiquetaSaludo = new JLabel("FASE DE CARGA DE EMPLEADO");
+        etiquetaSaludo.setForeground(new Color(239, 243, 245));
+        etiquetaSaludo.setOpaque(true);
+        etiquetaSaludo.setBackground(new Color(25, 34, 41));
+        etiquetaSaludo.setFont(new Font("Roboto Black", Font.ITALIC, 24));
+        etiquetaSaludo.setBounds(322, 33, 450, 50);
+        etiquetaSaludo.setHorizontalAlignment(JLabel.CENTER);
+        contentPane.add(etiquetaSaludo);
+        
+        
+        // Etiqueta para el nombre
+        JLabel labelNombre = new JLabel("INGRESA TU NOMBRE: ");
+        labelNombre.setFont(new Font("Roboto Black", Font.PLAIN, 20));
+        labelNombre.setOpaque(true);
+        labelNombre.setBackground(new Color(25, 34, 41));
+        labelNombre.setForeground(new Color(234, 226, 183));
+        labelNombre.setBounds(20, 98, 327, 49); // Ajustamos la posición vertical
+        contentPane.add(labelNombre);
+
+        // Campo de texto para el nombre
+        JTextField textNombre = new JTextField("PULSA AQUI PARA ESCRIBIR TU NOMBRE");
+        textNombre.setForeground(new Color(0, 0, 0));
+        textNombre.setOpaque(true);
+        textNombre.setBackground(new Color(25, 34, 41));
+        textNombre.setForeground(new Color(234, 226, 183));
+        textNombre.setFont(new Font("Roboto", Font.PLAIN, 16));
+        textNombre.setBounds(20, 137, 349, 24);
+        textNombre.setBorder(BorderFactory.createEmptyBorder());
+        textNombre.setColumns(10);
+        contentPane.add(textNombre);
+        
+
+        // Etiqueta para el apellido
+        JLabel labelApellido = new JLabel("INGRESA TU APELLIDO:");
+        labelApellido.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+        labelApellido.setBounds(20, 180, 317, 49);
+        labelApellido.setOpaque(true);
+        labelApellido.setBackground(new Color(25, 34, 41));
+        labelApellido.setForeground(new Color(234, 226, 183));
+        contentPane.add(labelApellido);
+        
+        // Separador para el nombre - apellido
+        JSeparator separatorApellido = new JSeparator();
+        separatorApellido.setForeground(new Color(160, 167, 172));
+        separatorApellido.setBounds(20, 170, 338, 2);
+        contentPane.add(separatorApellido);
+        
+     // Campo de texto para el apellido
+        JTextField textApellido = new JTextField("PULSA AQUI PARA ESCRIBIR TU APELLIDO");
+        textApellido.setForeground(new Color(0, 0, 0));
+        textApellido.setOpaque(true);
+        textApellido.setBackground(new Color(25, 34, 41));
+        textApellido.setForeground(new Color(234, 226, 183));
+        textApellido.setFont(new Font("Roboto", Font.PLAIN, 16));
+        textApellido.setBounds(20, 220, 317, 49);
+        textApellido.setBorder(BorderFactory.createEmptyBorder());
+        textApellido.setColumns(10);
+        contentPane.add(textApellido);
+        
+        // Separador para el  apellido-cedula
+        JSeparator separatorCedula = new JSeparator();
+        separatorCedula.setForeground(new Color(160, 167, 172));
+        separatorCedula.setBounds(20, 270, 338, 2);
+        contentPane.add(separatorCedula);
+        
+     // Etiqueta para la cédula
+        JLabel labelCedula = new JLabel("INGRESA TU CÉDULA:");
+        labelCedula.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+        labelCedula.setBounds(20, 280, 317, 49);
+        labelCedula.setOpaque(true);
+        labelCedula.setBackground(new Color(25, 34, 41));
+        labelCedula.setForeground(new Color(234, 226, 183));
+        contentPane.add(labelCedula);
+
+        
+     // Campo de texto para la cédula
+        JTextField textCedula = new JTextField("PULSA AQUI PARA ESCRIBIR TU CÉDULA (SIN PUNTOS NI ESPACIOS)");
+        textCedula.setForeground(new Color(0, 0, 0));
+        textCedula.setOpaque(true);
+        textCedula.setBackground(new Color(25, 34, 41));
+        textCedula.setForeground(new Color(234, 226, 183));
+        textCedula.setFont(new Font("Roboto", Font.PLAIN, 16));
+        textCedula.setBounds(20, 320, 495, 49);
+        textCedula.setBorder(BorderFactory.createEmptyBorder());
+        textCedula.setColumns(10);
+        contentPane.add(textCedula);
+        
+        // Separador para el  cedula-Genero
+        JSeparator separatorGenero = new JSeparator();
+        separatorGenero.setForeground(new Color(160, 167, 172));
+        separatorGenero.setBounds(20, 370, 338, 2);
+        contentPane.add(separatorGenero);
+        
+     // Etiqueta para el género
+        JLabel labelGenero = new JLabel("INGRESA TU GÉNERO:");
+        labelGenero.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+        labelGenero.setBounds(20, 385, 317, 49);
+        labelGenero.setOpaque(true);
+        labelGenero.setBackground(new Color(25, 34, 41));
+        labelGenero.setForeground(new Color(234, 226, 183));
+        contentPane.add(labelGenero);
+        
+        //RADIO BUTTONS!
+        JRadioButton rdbtnHombre = new JRadioButton("HOMBRE");
+       
+        rdbtnHombre.setFont(new Font("Roboto Black", Font.PLAIN, 16));
+        rdbtnHombre.setBounds(20, 440, 103, 21);
+        rdbtnHombre.setOpaque(true);
+        rdbtnHombre.setBackground(new Color(25, 34, 41));
+        rdbtnHombre.setForeground(new Color(234, 226, 183));
+        contentPane.add(rdbtnHombre);
+
+        JRadioButton rdbtnMujer = new JRadioButton("MUJER");
+      
+        rdbtnMujer.setFont(new Font("Roboto Black", Font.PLAIN, 16));
+        rdbtnMujer.setBounds(20, 470, 103, 21);
+        rdbtnMujer.setOpaque(true);
+        rdbtnMujer.setBackground(new Color(25, 34, 41));
+        rdbtnMujer.setForeground(new Color(234, 226, 183));
+        contentPane.add(rdbtnMujer);
+
+        JRadioButton rdbtnOtro = new JRadioButton("PREFIERO NO DECIRLO");
+        rdbtnOtro.setFont(new Font("Roboto Black", Font.PLAIN, 16));
+        rdbtnOtro.setBounds(20, 500, 200, 21);
+        rdbtnOtro.setOpaque(true);
+        rdbtnOtro.setBackground(new Color(25, 34, 41));
+        rdbtnOtro.setForeground(new Color(234, 226, 183));
+        contentPane.add(rdbtnOtro);
+
+        // Para que solo un botón sea seleccionable
+        ButtonGroup group = new ButtonGroup();
+        group.add(rdbtnHombre);
+        group.add(rdbtnMujer);
+        group.add(rdbtnOtro);
+        
+     // Etiqueta para el correo electrónico
+        JLabel labelCorreo = new JLabel("INGRESA TU CORREO ELECTRÓNICO:");
+        labelCorreo.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+        labelCorreo.setBounds(602, 99, 441, 49);
+        labelCorreo.setBackground(new Color(25, 34, 41));
+        labelCorreo.setForeground(new Color(234, 226, 183));
+        contentPane.add(labelCorreo);
+
+        // Campo de texto para el correo electrónico
+        JTextField txtCorreo = new JTextField("CORREO ELECTRÓNICO");
+        txtCorreo.setForeground(Color.BLACK);
+        txtCorreo.setFont(new Font("Roboto", Font.PLAIN, 14));
+        txtCorreo.setColumns(10);
+        txtCorreo.setBorder(BorderFactory.createEmptyBorder());
+        txtCorreo.setBounds(602, 138, 349, 24);
+        txtCorreo.setBackground(new Color(25, 34, 41));
+        txtCorreo.setForeground(new Color(234, 226, 183));
+        contentPane.add(txtCorreo);
+
+        // Separador para el correo electrónico
+        JSeparator separatorCorreo = new JSeparator();
+        separatorCorreo.setForeground(Color.BLACK);
+        separatorCorreo.setBounds(602, 170, 393, 2);
+        contentPane.add(separatorCorreo);
+        
+     // Etiqueta para el número de teléfono
+        JLabel labelTelefono = new JLabel("INGRESA TU NÚMERO DE TELÉFONO:");
+        labelTelefono.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+        labelTelefono.setBounds(602, 190, 441, 49);
+        labelTelefono.setBackground(new Color(25, 34, 41));
+        labelTelefono.setForeground(new Color(234, 226, 183));
+        contentPane.add(labelTelefono);
+
+        // Campo de texto para el número de teléfono
+        JTextField txtTelefono = new JTextField("NÚMERO DE TELÉFONO");
+        txtTelefono.setForeground(Color.BLACK);
+        txtTelefono.setFont(new Font("Roboto", Font.PLAIN, 14));
+        txtTelefono.setColumns(10);
+        txtTelefono.setBorder(BorderFactory.createEmptyBorder());
+        txtTelefono.setBounds(602, 234, 349, 24);
+        txtTelefono.setBackground(new Color(25, 34, 41));
+        txtTelefono.setForeground(new Color(234, 226, 183));
+        contentPane.add(txtTelefono);
+
+        // Separador para el número de teléfono
+        JSeparator separatorTelefono = new JSeparator();
+        separatorTelefono.setForeground(Color.BLACK);
+        separatorTelefono.setBounds(602, 267, 393, 2);
+        contentPane.add(separatorTelefono);
+        
+     // Etiqueta para la dirección de habitación
+        JLabel labelDireccion = new JLabel("INGRESA TU DIRECCIÓN DE HABITACIÓN:");
+        labelDireccion.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+        labelDireccion.setBounds(602, 290, 441, 49);
+        labelDireccion.setBackground(new Color(25, 34, 41));
+        labelDireccion.setForeground(new Color(234, 226, 183));
+        contentPane.add(labelDireccion);
+
+        // Campo de texto para la dirección de habitación
+        JTextField txtDireccion = new JTextField("DIRECCIÓN");
+        txtDireccion.setForeground(Color.BLACK);
+        txtDireccion.setFont(new Font("Roboto", Font.PLAIN, 14));
+        txtDireccion.setColumns(10);
+        txtDireccion.setBorder(BorderFactory.createEmptyBorder());
+        txtDireccion.setBounds(602, 334, 349, 24);
+        txtDireccion.setBackground(new Color(25, 34, 41));
+        txtDireccion.setForeground(new Color(234, 226, 183));
+        contentPane.add(txtDireccion);
+
+        // Separador para la dirección de habitación
+        JSeparator separatorDireccion = new JSeparator();
+        separatorDireccion.setForeground(Color.BLACK);
+        separatorDireccion.setBounds(602, 367, 393, 2);
+        contentPane.add(separatorDireccion);
+        
+     // Etiqueta para la edad
+        JLabel labelEdad = new JLabel("INGRESA TU EDAD:");
+        labelEdad.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+        labelEdad.setBounds(602, 390, 441, 49);
+        labelEdad.setBackground(new Color(25, 34, 41));
+        labelEdad.setForeground(new Color(234, 226, 183));
+        contentPane.add(labelEdad);
+        
+        
+     // Combo box para la edad
+        JComboBox comboEdad = new JComboBox();
+        comboEdad.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+        comboEdad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        comboEdad.setBounds(602, 434, 170, 33);
+        comboEdad.setBackground(new Color(25, 34, 41));
+        comboEdad.setBorder(BorderFactory.createLineBorder(new Color(234, 226, 183), 8));
+
+        comboEdad.setForeground(new Color(234, 226, 183));
+        for (int i = 1; i <= 100; i++) {
+            comboEdad.addItem(i);
+        }
+        comboEdad.setBorder(new LineBorder(new Color(0, 0, 0)));
+        comboEdad.setUI(new BasicComboBoxUI());
+        contentPane.add(comboEdad);
+        
+        // Botón "BORRAR TODO"
+        JButton botonBorrar = new JButton("BORRAR TODO");
+        botonBorrar.setFont(new Font("Roboto Black", Font.PLAIN, 22));
+        botonBorrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        botonBorrar.setOpaque(true);
+        botonBorrar.setForeground(Color.WHITE);
+        botonBorrar.setBackground(Color.RED);
+        botonBorrar.setBounds(745, 550, 250, 40);
+        botonBorrar.setHorizontalAlignment(JLabel.CENTER);
+        contentPane.add(botonBorrar);
+
+        // Botón "CARGAR EMPLEADO"
+        JButton botonCargar = new JButton("CARGAR EMPLEADO");
+        botonCargar.setFont(new Font("Roboto Black", Font.PLAIN, 22));
+        botonCargar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        botonCargar.setOpaque(true);
+        botonCargar.setForeground(Color.WHITE);
+        botonCargar.setBackground(Color.GREEN);
+        botonCargar.setBounds(40, 550, 250, 40);
+        botonCargar.setHorizontalAlignment(JLabel.CENTER);
+        contentPane.add(botonCargar);
+
+        // Botón "VER LISTA DE EMPLEADOS"
+        JButton botonLeer = new JButton("VER LISTA DE EMPLEADOS");
+        botonLeer.setFont(new Font("Roboto Black", Font.PLAIN, 16));
+        botonLeer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        botonLeer.setOpaque(true);
+        botonLeer.setForeground(Color.WHITE);
+        botonLeer.setBackground(Color.BLUE);
+        botonLeer.setBounds(377, 550, 238, 40);
+        contentPane.add(botonLeer);
+/*
+        // Agregar listeners para los botones (acción al hacer clic)
+        botonBorrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para borrar todo
+                // ...
+            }
+        });
+
+        botonCargar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para cargar empleado
+                // ...
+            }
+        });
+
+        botonLeer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para ver lista de empleados
+                // ...
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new MiVentana().setVisible(true);
+        });
+    }
+        
+        
+
+
+
+
+
+
+
+        
+        
+
+
+
+
+
+
+        
+*/
+        // Ajustar el tamaño del JFrame automáticamente
+        //pack();
+
+        // Mostrar la ventana
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new carga();
+    }
+}

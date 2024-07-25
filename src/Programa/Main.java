@@ -12,24 +12,24 @@ import java.awt.event.ActionListener;
 public class Main extends JFrame implements ActionListener {
     private JPanel contentPane;
     private JButton botonCargar, botonLeer, botonInstrucciones;
-    private JLabel etiquetaSaludo, etiquetaTitulo;
+    private JLabel etiquetaSaludo;
 
     public Main() {
         // Crear el contentPane primero
         contentPane = new JPanel();
-        setBounds(0, 0, 1080, 710);
+        setBounds(0, 0, 900, 610);
 		setResizable(false); //para que el tamano no se cambie
-
+		setTitle("PAGINA PRINCIPAL");
         //contentPane.setBackground(Color.WHITE);
         //contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
         contentPane.setLayout(null);
         setContentPane(contentPane); // Establecer el contentPane
-
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         // Cargar la imagen de fondo
         ImageIcon fondoIcon = new ImageIcon("patron.png");
 
         JLabel fondoLabel = new JLabel(fondoIcon);
-        fondoLabel.setBounds(0,0,  1080, 710);
+        fondoLabel.setBounds(0,0,  900, 610);
         contentPane.add(fondoLabel); // Agregar la imagen de fondo al contentPane
         
         
@@ -40,7 +40,7 @@ public class Main extends JFrame implements ActionListener {
         etiquetaSaludo.setOpaque(true);
         etiquetaSaludo.setBackground(new Color(253, 252, 220));
         etiquetaSaludo.setFont(new Font("Roboto Black", Font.PLAIN, 18));
-        etiquetaSaludo.setBounds(200, 50, 700, 50);
+        etiquetaSaludo.setBounds(100, 50, 700, 50);
         etiquetaSaludo.setHorizontalAlignment(JLabel.CENTER);
         fondoLabel.add(etiquetaSaludo);
 
@@ -51,7 +51,7 @@ public class Main extends JFrame implements ActionListener {
         botonCargar.setOpaque(true);
         botonCargar.setForeground(new Color(3, 4, 94));
         botonCargar.setBackground(new Color(253, 252, 220));
-        botonCargar.setBounds(100, 400, 250, 40);       
+        botonCargar.setBounds(30, 400, 250, 40);       
         botonCargar.setHorizontalAlignment(JLabel.CENTER);
         fondoLabel.add(botonCargar);
 
@@ -61,7 +61,7 @@ public class Main extends JFrame implements ActionListener {
         botonLeer.setOpaque(true);
         botonLeer.setForeground(new Color(3, 4, 94));        
         botonLeer.setBackground(new Color(253, 252, 220));
-        botonLeer.setBounds(729, 398, 238, 45);
+        botonLeer.setBounds(619, 398, 238, 45);
         fondoLabel.add(botonLeer);
 
         botonInstrucciones = new JButton("INSTRUCCIONES DE USO");
@@ -70,7 +70,7 @@ public class Main extends JFrame implements ActionListener {
         botonInstrucciones.setForeground(new Color(3, 4, 94));
         botonInstrucciones.setBackground(new Color(253, 252, 220));
         botonInstrucciones.setFont(new Font("Roboto Black", Font.PLAIN, 16));
-        botonInstrucciones.setBounds(400, 400, 250, 45);
+        botonInstrucciones.setBounds(320, 400, 250, 45);
         fondoLabel.add(botonInstrucciones);
         
         
