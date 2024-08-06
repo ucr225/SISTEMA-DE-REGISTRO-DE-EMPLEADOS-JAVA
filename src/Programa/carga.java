@@ -6,15 +6,31 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.plaf.basic.BasicComboBoxUI;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicComboBoxUI;
 
 public class carga extends JFrame {
     private JPanel contentPane;
     private JLabel etiquetaSaludo;
 
     public carga() {
+    	
+    	
+    	//para mi record
+    	//Empleado empleado;
+    	//empleado = new Empleado(nombre, apellido, getDefaultCloseOperation(), getTitle(), getTitle(), getDefaultCloseOperation(), getTitle(), getDefaultCloseOperation());
+    	
         // Creando el content pane
         contentPane = new JPanel();
         setBounds(100, 100, 1056, 680);
@@ -296,6 +312,62 @@ public class carga extends JFrame {
         botonLeer.setBackground(Color.BLUE);
         botonLeer.setBounds(377, 550, 238, 40);
         contentPane.add(botonLeer);
+        
+        
+        // Agregar ActionListener al botón
+        botonCargar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Aquí manejas la acción del botón
+                // Obtener el texto ingresado y realizar otras acciones
+                String nombre = textNombre.getText();
+                String apellido = textApellido.getText();
+                int cedula = Integer.parseInt(textCedula.getText());
+                String genero = "";
+                
+                if(rdbtnHombre.isSelected()) {
+                	genero="Masculino";
+                }else if (rdbtnMujer.isSelected()) {
+                	genero="Femenino";
+                }else if (rdbtnOtro.isSelected()) {
+                	genero="Otro";
+                }
+                ///                                               
+                String correo = txtCorreo.getText();
+                int numero = Integer.parseInt(txtTelefono.getText());
+                String direccion = txtDireccion.getText();
+                int edad = Integer.parseInt(comboEdad.getSelectedItem().toString());
+                /*
+                // Por ejemplo, imprimir los valores obtenidos
+                System.out.println("Nombre: " + nombre);
+                System.out.println("Apellido: " + apellido);
+                System.out.println("Cédula: " + cedula);
+                System.out.println("Género: " + genero);
+                System.out.println("Correo electrónico: " + correo);
+                System.out.println("Número de teléfono: " + numero);
+                System.out.println("Dirección: " + direccion);
+                System.out.println("Edad: " + edad);
+                */
+                // Crear una instancia de Empleado
+                Empleado empleado1 = new Empleado(nombre, apellido, cedula, genero,
+                        correo, numero, direccion, edad);
+
+                // Imprimir la representación textual del objeto
+                System.out.println(empleado1);
+                System.out.println(empleado1.nombre);
+                
+                
+                
+                
+            }
+
+
+        });
+        
+        
+        
+        
+        
 /*
         // Agregar listeners para los botones (acción al hacer clic)
         botonBorrar.addActionListener(new ActionListener() {
