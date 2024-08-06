@@ -4,19 +4,21 @@ public class Empleado {
     public String apellido;
     public int cedula;
     public String genero;
-    public String correoElectronico;
+    public String correo;
     public int numeroTelefono;
     public String direccion;
     public int edad;
+	
+	
 
     // Constructor
     public Empleado(String nombre, String apellido, int cedula, String genero,
-                    String correoElectronico, int numeroTelefono, String direccion, int edad) {
+                    String correo, int numeroTelefono, String direccion, int edad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.genero = genero;
-        this.correoElectronico = correoElectronico;
+        this.correo = correo;
         this.numeroTelefono = numeroTelefono;
         this.direccion = direccion;
         this.edad = edad;
@@ -53,7 +55,7 @@ public class Empleado {
         Empleado empleado1 = new Empleado("Juan", "Pérez", 12345678, "Masculino",
                 "juan@example.com", 555123456, "Calle Principal 123", 30);
 
-        System.out.println(empleado1);
+        System.out.println(empleado1.nombre);
     }
     
 

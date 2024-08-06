@@ -112,7 +112,8 @@ public class carga extends JFrame {
         contentPane.add(separatorCedula);
         
      // Etiqueta para la cédula
-        JLabel labelCedula = new JLabel("INGRESA TU CÉDULA:");
+        JLabel labelCedula = new JLabel("INGRESA TU CÉDULA (SIN PUNTOS Y ESPACIOS) :");
+        
         labelCedula.setFont(new Font("Roboto Black", Font.PLAIN, 18));
         labelCedula.setBounds(20, 280, 317, 49);
         labelCedula.setOpaque(true);
@@ -122,7 +123,7 @@ public class carga extends JFrame {
 
         
      // Campo de texto para la cédula
-        JTextField textCedula = new JTextField("PULSA AQUI PARA ESCRIBIR TU CÉDULA (SIN PUNTOS NI ESPACIOS)");
+        JTextField textCedula = new JTextField("123456");
         textCedula.setForeground(new Color(0, 0, 0));
         textCedula.setOpaque(true);
         textCedula.setBackground(new Color(25, 34, 41));
@@ -167,7 +168,7 @@ public class carga extends JFrame {
         rdbtnMujer.setForeground(new Color(234, 226, 183));
         contentPane.add(rdbtnMujer);
 
-        JRadioButton rdbtnOtro = new JRadioButton("PREFIERO NO DECIRLO");
+        JRadioButton rdbtnOtro = new JRadioButton("OTRO");
         rdbtnOtro.setFont(new Font("Roboto Black", Font.PLAIN, 16));
         rdbtnOtro.setBounds(20, 500, 200, 21);
         rdbtnOtro.setOpaque(true);
@@ -190,7 +191,7 @@ public class carga extends JFrame {
         contentPane.add(labelCorreo);
 
         // Campo de texto para el correo electrónico
-        JTextField txtCorreo = new JTextField("CORREO ELECTRÓNICO");
+        JTextField txtCorreo = new JTextField("ejemplo123@gmail.com");
         txtCorreo.setForeground(Color.BLACK);
         txtCorreo.setFont(new Font("Roboto", Font.PLAIN, 14));
         txtCorreo.setColumns(10);
@@ -207,7 +208,7 @@ public class carga extends JFrame {
         contentPane.add(separatorCorreo);
         
      // Etiqueta para el número de teléfono
-        JLabel labelTelefono = new JLabel("INGRESA TU NÚMERO DE TELÉFONO:");
+        JLabel labelTelefono = new JLabel("INGRESA TU NÚMERO DE TELÉFONO (SIN PUNTOS O ESPACIOS):");
         labelTelefono.setFont(new Font("Roboto Black", Font.PLAIN, 18));
         labelTelefono.setBounds(602, 190, 441, 49);
         labelTelefono.setBackground(new Color(25, 34, 41));
@@ -215,7 +216,7 @@ public class carga extends JFrame {
         contentPane.add(labelTelefono);
 
         // Campo de texto para el número de teléfono
-        JTextField txtTelefono = new JTextField("NÚMERO DE TELÉFONO");
+        JTextField txtTelefono = new JTextField("0212111");
         txtTelefono.setForeground(Color.BLACK);
         txtTelefono.setFont(new Font("Roboto", Font.PLAIN, 14));
         txtTelefono.setColumns(10);
@@ -353,10 +354,16 @@ public class carga extends JFrame {
                         correo, numero, direccion, edad);
 
                 // Imprimir la representación textual del objeto
+                
                 System.out.println(empleado1);
-                System.out.println(empleado1.nombre);
-                
-                
+                System.out.println(empleado1.nombre);              
+                System.out.println(empleado1.apellido);
+                System.out.println(empleado1.cedula);
+                System.out.println(empleado1.genero);
+                System.out.println(empleado1.correo);
+                System.out.println(empleado1.direccion);
+                System.out.println(empleado1.edad);
+                System.out.println("-------------------");
                 
                 
             }
