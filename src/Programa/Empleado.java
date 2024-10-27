@@ -5,24 +5,30 @@ public class Empleado {
     public int cedula;
     public String genero;
     public String correo;
-    public int numeroTelefono;
+    public String numeroTelefono;
     public String direccion;
     public int edad;
+	public String numero;
 	
 	
 
     // Constructor
     public Empleado(String nombre, String apellido, int cedula, String genero,
-                    String correo, int numeroTelefono, String direccion, int edad) {
+                    String correo, String direccion, int edad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.genero = genero;
         this.correo = correo;
-        this.numeroTelefono = numeroTelefono;
+		//this.numero = numero2;
+        //this.numeroTelefono = numero2;
         this.direccion = direccion;
         this.edad = edad;
     }
+    
+    
+    
+    
 /*
     // Getters y setters (puedes agregar más según tus necesidades)
     public String getNombre() {
@@ -50,10 +56,12 @@ public class Empleado {
                 '}';
     }
 */
+    
+    
     // Ejemplo de uso
     public static void main(String[] args) {
         Empleado empleado1 = new Empleado("Juan", "Pérez", 12345678, "Masculino",
-                "juan@example.com", 555123456, "Calle Principal 123", 30);
+                "juan@example.com", "Calle Principal 123", 30);
 
         System.out.println(empleado1.nombre);
     }

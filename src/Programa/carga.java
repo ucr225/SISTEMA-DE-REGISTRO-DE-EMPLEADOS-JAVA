@@ -20,6 +20,7 @@ import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
+
 public class carga extends JFrame {
     private JPanel contentPane;
     private JLabel etiquetaSaludo;
@@ -30,7 +31,7 @@ public class carga extends JFrame {
     	//para mi record
     	//Empleado empleado;
     	//empleado = new Empleado(nombre, apellido, getDefaultCloseOperation(), getTitle(), getTitle(), getDefaultCloseOperation(), getTitle(), getDefaultCloseOperation());
-    	
+    	//hoaaaa
         // Creando el content pane
         contentPane = new JPanel();
         setBounds(100, 100, 1056, 680);
@@ -320,6 +321,8 @@ public class carga extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Aquí manejas la acción del botón
+            	
+            	
                 // Obtener el texto ingresado y realizar otras acciones
                 String nombre = textNombre.getText();
                 String apellido = textApellido.getText();
@@ -335,7 +338,7 @@ public class carga extends JFrame {
                 }
                 ///                                               
                 String correo = txtCorreo.getText();
-                int numero = Integer.parseInt(txtTelefono.getText());
+                //int numero = Integer.parseInt(txtTelefono.getText());
                 String direccion = txtDireccion.getText();
                 int edad = Integer.parseInt(comboEdad.getSelectedItem().toString());
                 /*
@@ -351,7 +354,7 @@ public class carga extends JFrame {
                 */
                 // Crear una instancia de Empleado
                 Empleado empleado1 = new Empleado(nombre, apellido, cedula, genero,
-                        correo, numero, direccion, edad);
+                        correo,direccion, edad);
 
                 // Imprimir la representación textual del objeto
                 
@@ -364,6 +367,9 @@ public class carga extends JFrame {
                 System.out.println(empleado1.direccion);
                 System.out.println(empleado1.edad);
                 System.out.println("-------------------");
+                
+                Datos.registro(nombre, apellido, cedula, genero, correo,  direccion, edad);
+                
                 
                 
             }

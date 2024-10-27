@@ -3,6 +3,8 @@ package Programa;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -91,6 +93,7 @@ public class lectura extends JFrame {
         botonLeer.setForeground(Color.WHITE);
         botonLeer.setBackground(Color.BLUE);
         botonLeer.setBounds(377, 550, 238, 40);
+        
         contentPane.add(botonLeer);
         
         textField = new JTextField("INGRESA EL NUMERO DE CEDULA.....");
@@ -102,6 +105,23 @@ public class lectura extends JFrame {
         textField.setFont(new Font("Roboto", Font.PLAIN, 16));
         contentPane.add(textField);
         textField.setColumns(10);
+        
+        
+        botonLeer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int cedula = Integer.parseInt(textField.getText());
+                Datos.consulta(cedula);
+                System.out.println(cedula);
+            }
+        });
+
+        
+        
+        
+        
+        
+        
 /*
         // Agregar listeners para los botones (acción al hacer clic)
         botonBorrar.addActionListener(new ActionListener() {
