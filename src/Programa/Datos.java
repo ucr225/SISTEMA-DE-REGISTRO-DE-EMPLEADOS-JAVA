@@ -5,119 +5,89 @@ import java.sql.SQLException;      // Importa la clase SQLException para manejar
 import java.sql.Connection;        // Importa la clase Connection para manejar la conexión con la base de datos
 import java.sql.DriverManager;     // Importa la clase DriverManager para gestionar los controladores JDBC
 import java.sql.Statement;         // Importa la clase Statement para ejecutar consultas SQL estáticas
-
-import javax.swing.JOptionPane;
-
+import javax.swing.JOptionPane;    // Importa la clase JOptionPane para mostrar mensajes en cuadros de diálogo
 import java.sql.PreparedStatement; // Importa la clase PreparedStatement para ejecutar consultas SQL parametrizadas
 
-// Aquí podrías añadir el resto de tu código para establecer una conexión y ejecutar consultas.
-
-
-
-
 public class Datos {
-	private static String url = "jdbc:sqlite:SGestion.db";
-	static Connection connect = null;
-	static Statement state = null;
-	
-	
-	
-	public static void conectarBD() {
-        try {
-            connect = DriverManager.getConnection(url);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    private static String url = "jdbc:sqlite:SGestion.db"; // URL de la base de datos SQLite
+    static Connection connect = null;                      // Variable para la conexión a la base de datos
+    static Statement state = null;                         // Variable para ejecutar consultas SQL estáticas
 
+    // Método para conectar a la base de datos
+    public static void conectarBD() {
+        try {
+            connect = DriverManager.getConnection(url);   // Establece la conexión a la base de datos
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); // Muestra un cuadro de diálogo en caso de error
         }
         try {
-            state = connect.createStatement();
+            state = connect.createStatement();            // Crea un Statement para ejecutar consultas SQL
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); // Muestra un cuadro de diálogo en caso de error
         }
     }
-	
-	
-	
-	// Cierra la conexión con la base de datos
+
+    // Método para cerrar la conexión con la base de datos
     public static void cerrarConexion() {
         try {
-            connect.close();
+            if (connect != null) connect.close(); // Cierra la conexión a la base de datos si está abierta
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); // Muestra un cuadro de diálogo en caso de error
         }
     }
-    
-    
+
+    // Método para registrar datos en la base de datos
     public static void registro(String nombre, String apellido, int cedula, String genero,
-            String correo, String direccion, int edad) {
-    	
-    	conectarBD();
-    	PreparedStatement preparedStatement= null;
-    	
+                                String correo, String direccion, int edad) {
+        conectarBD(); // Conecta a la base de datos
+        PreparedStatement preparedStatement = null;
+
         try {
-            String querry = "INSERT INTO EMPLEADOS (NOMBRE,APELLIDO,CEDULA,GENERO,CORREO,DIRECCION,EDAD) VALUES (?,?,?,?,?,?,?)";
-            
-            preparedStatement = connect.prepareStatement(querry);          
-            preparedStatement.setString(1,nombre);
-            preparedStatement.setString(2,apellido);
-            preparedStatement.setInt(3,cedula);
-            preparedStatement.setString(4,genero);
-            preparedStatement.setString(5,correo);
-            preparedStatement.setString(6,direccion);
-            preparedStatement.setInt(7,edad);
-            //preparedStatement.setInt(8,telefono);
-            preparedStatement.executeUpdate();
-            
-            
-            JOptionPane.showMessageDialog(null, "SE HA INSERTADO UN EMPLEADO CON EXITO", "INFO", JOptionPane.OK_OPTION);
-            
-            
-            
-            
+            String query = "INSERT INTO EMPLEADOS (NOMBRE, APELLIDO, CEDULA, GENERO, CORREO, DIRECCION, EDAD) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            preparedStatement = connect.prepareStatement(query); // Prepara la consulta SQL
+
+            // Establece los valores de los parámetros
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, apellido);
+            preparedStatement.setInt(3, cedula);
+            preparedStatement.setString(4, genero);
+            preparedStatement.setString(5, correo);
+            preparedStatement.setString(6, direccion);
+            preparedStatement.setInt(7, edad);
+
+            preparedStatement.executeUpdate(); // Ejecuta la consulta
+
+            JOptionPane.showMessageDialog(null, "SE HA INSERTADO UN EMPLEADO CON ÉXITO", "INFO", JOptionPane.OK_OPTION); // Muestra un mensaje de éxito
+
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); // Muestra un cuadro de diálogo en caso de error
+        } finally {
+            cerrarConexion(); // Cierra la conexión a la base de datos
         }
-    	
-    	cerrarConexion();
-    	
-    	
-    	
-    	
     }
-    
-    
+
+    // Método para consultar datos en la base de datos
     public static void consulta(int cedula) {
-    	conectarBD();
-    	//PreparedStatement preparedStatement= null;
+        conectarBD(); // Conecta a la base de datos
+        System.out.println(cedula); // Imprime la cédula ingresada (para depuración)
 
-    	
-    	
-    	 System.out.println(cedula);
-    	
-    	try {
-            
-            
-            String querry = "SELECT NOMBRE FROM EMPLEADOS WHERE CEDULA = ?";
-            // "DELETE  FROM EMPLEADOS WHERE CEDULA = ?";
-            PreparedStatement preparedStatement=connect.prepareStatement(querry);
-            preparedStatement.setInt(1,cedula);
-            //OJO PARA BORRAR
-            ResultSet resultset = preparedStatement.executeQuery();
-            
-            String nombre = resultset.getString("NOMBRE");
-           
-            System.out.println(nombre);
-            
-            
-            
-            
+        try {
+            String query = "SELECT NOMBRE FROM EMPLEADOS WHERE CEDULA = ?"; // Consulta SQL para obtener el nombre basado en la cédula
+            PreparedStatement preparedStatement = connect.prepareStatement(query); // Prepara la consulta SQL
+            preparedStatement.setInt(1, cedula); // Establece el valor de la cédula en la consulta
+
+            ResultSet resultset = preparedStatement.executeQuery(); // Ejecuta la consulta y obtiene el resultado
+            if (resultset.next()) { // Verifica si hay un resultado
+                String nombre = resultset.getString("NOMBRE"); // Obtiene el nombre del resultado
+                System.out.println(nombre); // Imprime el nombre
+            } else {
+                JOptionPane.showMessageDialog(null, "NO EXISTE UN USUARIO CON ESA CÉDULA", query, JOptionPane.ERROR_MESSAGE); // Muestra un cuadro de diálogo si no se encuentra un usuario
+            }
+
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "NO EXISTE UN USUARIO CON ESA CEDULA", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); // Muestra un cuadro de diálogo en caso de error
+        } finally {
+            cerrarConexion(); // Cierra la conexión a la base de datos
         }
-    	
-    	cerrarConexion();
     }
-	
-	
 }
-
