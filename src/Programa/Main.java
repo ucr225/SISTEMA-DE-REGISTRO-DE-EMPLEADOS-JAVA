@@ -1,13 +1,15 @@
 package Programa;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.MultipleGradientPaint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.LinearGradientPaint;
 
 public class Main extends JFrame implements ActionListener {
     private JPanel contentPane;
@@ -17,63 +19,67 @@ public class Main extends JFrame implements ActionListener {
     public Main() {
         // Crear el contentPane primero
         contentPane = new JPanel();
-        setBounds(0, 0, 900, 610);
-		setResizable(false); //para que el tamano no se cambie
-		setTitle("PAGINA PRINCIPAL");
-        //contentPane.setBackground(Color.WHITE);
-        //contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+        setBounds(0, 0, 900, 410);
+        setResizable(false); // Para que el tamaño no se cambie
+        setTitle("MAIN PAGE");
         contentPane.setLayout(null);
+        contentPane.setBackground(new Color(25, 72, 95)); // Establecer el color de fondo
         setContentPane(contentPane); // Establecer el contentPane
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        // Cargar la imagen de fondo
-        ImageIcon fondoIcon = new ImageIcon("patron.png");
 
-        JLabel fondoLabel = new JLabel(fondoIcon);
-        fondoLabel.setBounds(0,0,  900, 610);
-        contentPane.add(fondoLabel); // Agregar la imagen de fondo al contentPane
-        
-        
-        
+        // Cargar el ícono desde el archivo
+        ImageIcon icon = new ImageIcon("icono.png");
+        setIconImage(icon.getImage()); // Establecer el icono de la ventana
+
         // Etiquetas
-        etiquetaSaludo = new JLabel("BIENVENIDO ESTIMADO USUARIO \n SISTEMA DE GESTION DE EMPLEADOS");
-        etiquetaSaludo.setForeground(new Color(3, 4, 94));
+        etiquetaSaludo = new JLabel("EMPLOYEE MANAGEMENT");
+        etiquetaSaludo.setForeground(new Color(217, 224, 164)); // Establecer el color de la fuente
+
         etiquetaSaludo.setOpaque(true);
-        etiquetaSaludo.setBackground(new Color(253, 252, 220));
-        etiquetaSaludo.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+        etiquetaSaludo.setOpaque(false);
+        //etiquetaSaludo.setBackground(new Color(253, 252, 220));
+        etiquetaSaludo.setFont(new Font("Poppins", Font.BOLD, 48));
         etiquetaSaludo.setBounds(100, 50, 700, 50);
+        
         etiquetaSaludo.setHorizontalAlignment(JLabel.CENTER);
-        fondoLabel.add(etiquetaSaludo);
+        contentPane.add(etiquetaSaludo); // Añadir la etiqueta al contentPane
 
         // Botones
-        botonCargar = new JButton("CARGAR EMPLEADO");
-        botonCargar.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+        botonCargar = new JButton("CREATE EMPLOYEE");
+        botonCargar.setFont(new Font("Poppins", Font.BOLD, 20));
         botonCargar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         botonCargar.setOpaque(true);
-        botonCargar.setForeground(new Color(3, 4, 94));
-        botonCargar.setBackground(new Color(253, 252, 220));
-        botonCargar.setBounds(30, 400, 250, 40);       
+        botonCargar.setForeground(new Color(25, 72, 95));
+        botonCargar.setBackground(new Color(217, 224, 164));
+        botonCargar.setBounds(30, 225, 240, 40);
         botonCargar.setHorizontalAlignment(JLabel.CENTER);
-        fondoLabel.add(botonCargar);
+        contentPane.add(botonCargar); // Añadir el botón al contentPane
 
-        botonLeer = new JButton("VER LISTA DE EMPLEADOS");
-        botonLeer.setFont(new Font("Roboto Black", Font.PLAIN, 16));
-        botonLeer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));  
-        botonLeer.setOpaque(true);
-        botonLeer.setForeground(new Color(3, 4, 94));        
-        botonLeer.setBackground(new Color(253, 252, 220));
-        botonLeer.setBounds(619, 398, 238, 45);
-        fondoLabel.add(botonLeer);
-
-        botonInstrucciones = new JButton("INSTRUCCIONES DE USO");
+        botonInstrucciones = new JButton("INSTRUCTIONS");
         botonInstrucciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         botonInstrucciones.setOpaque(true);
-        botonInstrucciones.setForeground(new Color(3, 4, 94));
-        botonInstrucciones.setBackground(new Color(253, 252, 220));
-        botonInstrucciones.setFont(new Font("Roboto Black", Font.PLAIN, 16));
-        botonInstrucciones.setBounds(320, 400, 250, 45);
-        fondoLabel.add(botonInstrucciones);
+        botonInstrucciones.setForeground(new Color(25, 72, 95));
+        botonInstrucciones.setBackground(new Color(217, 224, 164));
+        botonInstrucciones.setFont(new Font("Poppins", Font.BOLD, 20));
+        botonInstrucciones.setBounds(320, 220, 250, 45);
+        contentPane.add(botonInstrucciones); // Añadir el botón al contentPane
         
         
+        botonLeer = new JButton("SEE LIST");
+        botonLeer.setFont(new Font("Poppins", Font.BOLD, 24));
+        botonLeer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        botonLeer.setOpaque(true);
+        botonLeer.setForeground(new Color(25, 72, 95));
+        botonLeer.setBackground(new Color(217, 224, 164));
+        botonLeer.setBounds(619, 220, 238, 45);
+        contentPane.add(botonLeer); // Añadir el botón al contentPane
+
+
+
+        // Añadir ActionListener a los botones
+        botonCargar.addActionListener(this);
+        botonLeer.addActionListener(this);
+        botonInstrucciones.addActionListener(this);
 
         // Mostrar la ventana
         setVisible(true);
@@ -84,12 +90,25 @@ public class Main extends JFrame implements ActionListener {
     }
 
     @Override
+    
     public void actionPerformed(ActionEvent e) {
-        // TODO: Implementar acciones para los botones
+        if (e.getSource() == botonCargar) {
+            new carga().setVisible(true);
+        } else if (e.getSource() == botonLeer) {
+            new VerListaEmpleadosWindow().setVisible(true);
+        } else if (e.getSource() == botonInstrucciones) {
+            new InstruccionesUsoWindow().setVisible(true);
+        }
     }
+    /*
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == botonCargar) {
+            JOptionPane.showMessageDialog(this, "Cargar Empleado");
+        } else if (e.getSource() == botonLeer) {
+            JOptionPane.showMessageDialog(this, "Ver Lista de Empleados");
+        } else if (e.getSource() == botonInstrucciones) {
+            JOptionPane.showMessageDialog(this, "Instrucciones de Uso");
+        }
+    }
+    */
 }
-
-
-
-
-
