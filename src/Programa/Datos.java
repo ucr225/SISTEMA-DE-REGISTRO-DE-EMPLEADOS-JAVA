@@ -57,7 +57,7 @@ public class Datos {
 
             preparedStatement.executeUpdate(); // Ejecuta la consulta
 
-            JOptionPane.showMessageDialog(null, "SE HA INSERTADO UN EMPLEADO CON ÉXITO", "INFO", JOptionPane.OK_OPTION); // Muestra un mensaje de éxito
+            JOptionPane.showMessageDialog(null, "EMPLOYEE CREATED SUCCESSFULLY", "INFO", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); // Muestra un cuadro de diálogo en caso de error

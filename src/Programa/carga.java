@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -45,7 +46,9 @@ public class carga extends JFrame {
         // Configurar la operación de cierre
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        
+        // Cargar el ícono desde el archivo
+        ImageIcon icon = new ImageIcon("icono.png");
+        setIconImage(icon.getImage()); // Establecer el icono de la ventana
         //
         etiquetaSaludo = new JLabel("CREATING EMPLOYEE PHASE");
         etiquetaSaludo.setForeground(new Color(239, 243, 245));

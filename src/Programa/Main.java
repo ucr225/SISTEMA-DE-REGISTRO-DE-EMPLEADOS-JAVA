@@ -90,17 +90,18 @@ public class Main extends JFrame implements ActionListener {
     }
 
     @Override
-    
+    /*
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botonCargar) {
-            new carga().setVisible(true);
+            new CargarEmpleadoWindow().setVisible(true);
         } else if (e.getSource() == botonLeer) {
             new VerListaEmpleadosWindow().setVisible(true);
         } else if (e.getSource() == botonInstrucciones) {
             new InstruccionesUsoWindow().setVisible(true);
         }
     }
-    /*
+    */
+    
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botonCargar) {
             JOptionPane.showMessageDialog(this, "Cargar Empleado");
@@ -110,5 +111,5 @@ public class Main extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, "Instrucciones de Uso");
         }
     }
-    */
+    
 }
